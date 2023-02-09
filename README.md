@@ -26,3 +26,8 @@ git add .
 
 git commit -m "first commit"
 
+git branch -M main
+
+git remote add origin https://github.com/ashwinprabhukp/winequality_mlops.git
+
+git push -u origin main

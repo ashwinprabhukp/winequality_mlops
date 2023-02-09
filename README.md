@@ -16,18 +16,23 @@ install the requirements
 ```bash
 https://drive.google.com/drive/folders/18zqQiCJVgF7uzXgfbIJ-04zgz1ItNfF5?usp=sharing
 ```
+```bash
 git init
-
+```
+```bash
 dvc init
-
+```
+```bash
 dvc add .\data_given\winequality.csv
-
+```
+```bash
 git add .
-
+```
+```bash
 git commit -m "first commit"
-
-git branch -M main
-
+```
+```bash
 git remote add origin https://github.com/ashwinprabhukp/winequality_mlops.git
-
-git push -u origin main
+git branch -M main
+git push origin main
+```

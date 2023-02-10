@@ -36,3 +36,28 @@ git remote add origin https://github.com/ashwinprabhukp/winequality_mlops.git
 git branch -M main
 git push origin main
 ```
+
+tox command
+```bash
+tox
+```
+
+for rebuilding
+```bash
+tox -r
+```
+
+pytest command
+```bash
+ pytest -v
+ ```
+
+setup commands
+```bash
+pip install -e
+```
+
+build your own package commands
+```bash
+python setup.py sdist bdist_wheel
+```

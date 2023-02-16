@@ -9,3 +9,4 @@ pandas
 scikit-learn
 pytest
 tox
+flake8 # library to track code quality and fomatting

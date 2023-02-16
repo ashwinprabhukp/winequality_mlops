@@ -19,9 +19,7 @@ def predict(data):
         config = read_params(params_path)
         model_dir_path = config["webapp_model_dir"]
         model = joblib.load(model_dir_path)
-        print(data)
-        prediction = model.predict(data[0])
-        print(prediction)
+        prediction = model.predict(data)
         return prediction[0]
     except Exception as e:
         print(e)

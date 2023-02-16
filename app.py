@@ -15,16 +15,23 @@ template_dir = os.path.join(webapp_root, "templates")
 app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 
 def predict(data):
-    config = read_params(params_path)
-    model_dir_path = config["webapp_model_dir"]
-    model = joblib.load(model_dir_path)
-    prediction = model.predict(data)
-    print(prediction)
-    return prediction[0]
+    try:
+        config = read_params(params_path)
+        model_dir_path = config["webapp_model_dir"]
+        model = joblib.load(model_dir_path)
+        print(data)
+        prediction = model.predict(data[0])
+        print(prediction)
+        return prediction[0]
+    except Exception as e:
+        print(e)
+        error = {"error": "Something went wrong while predicting from the model! Try again"}
+        return error
 
 def api_response(request):
     try:
         data = np.array([list(request.json.values())])
+        print(data)
         response = predict(data)
         response = {"response": response}
         return response
@@ -38,11 +45,15 @@ def index():
         try:
             if request.form:
                 data = dict(request.form).values()
+                print(data)
                 data = [list(map(float, data))]
+                print(data)
                 response = predict(data)
                 return render_template("index", response=response)
             elif request.json:
+                print(request)
                 response = api_response(request)
+                print(response)
                 return jsonify(response)
         except Exception as e:
             print(e)

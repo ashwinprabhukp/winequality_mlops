@@ -12,7 +12,7 @@ install the requirements
 ```bash
 pip install -r .\requirements.txt
 ```
-install the requirements
+Dataset location
 ```bash
 https://drive.google.com/drive/folders/18zqQiCJVgF7uzXgfbIJ-04zgz1ItNfF5?usp=sharing
 ```

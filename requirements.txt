@@ -12,3 +12,4 @@ tox
 flake8 # library to track code quality and fomatting
 flask
 gunicorn
+mlflow

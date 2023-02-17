@@ -72,6 +72,12 @@ def api_response(dict_request):
             response = predict(data)
             response = {"response": response}
             return response
+    except NotInRange as e:
+        response = {"The_expected_range": get_schema(), "response": str(e)}
+        return response
+    except NotInCols as e:
+        response = {"The_expected_cols": get_schema().keys(), "response": str(e)}
+        return response
     except Exception as e:
         response = {"The_expected_range": get_schema(), "response": str(e)}
         return response

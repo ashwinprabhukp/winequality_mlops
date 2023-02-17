@@ -36,9 +36,14 @@ def predict(data):
         return "Unexpected result"
 
 def get_schema(schema_path=schema_path):
-    with open(schema_path) as json_file:
-        schema = json.safe_load(json_file)
-    return schema
+    try:
+        with open(schema_path) as json_file:
+            schema = json.load(json_file)
+        return schema
+    except Exception as e:
+        response = {"response": str(e)}
+        return response
+
 
 def validate_input(dict_request):
     def _validate_cols(col):
@@ -53,11 +58,11 @@ def validate_input(dict_request):
     for col, val in dict_request.items():
         _validate_cols(col)
         _validate_values(col, val)
+    return True
 
 def form_response(dict_request):
     if validate_input(dict_request):
-        data = dict_request.values()
-        data = [list(map(float, data))]
+        data = np.array([list(dict_request.values())])
         response = predict(data)
         return response
 def api_response(dict_request):

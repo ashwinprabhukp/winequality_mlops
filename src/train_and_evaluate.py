@@ -45,6 +45,7 @@ def train_and_evaluate(config_path):
 
 
 ################ MLFlow ################################
+
     mlflow_config = config["mlflow_config"]
     remote_server_uri = mlflow_config["remote_server_uri"]
 
@@ -79,6 +80,7 @@ def train_and_evaluate(config_path):
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
-    args.add_argument("--config", default="params.yaml")
+    args.add_argument("--config", default="./params.yaml")
     parsed_args = args.parse_args()
+    print(parsed_args.config)
     train_and_evaluate(config_path=parsed_args.config)
